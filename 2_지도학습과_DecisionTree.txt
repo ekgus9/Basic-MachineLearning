@@ -1,0 +1,42 @@
+2-1 Decision Tree란 무엇인가?
+-지도학습이란?
+데이터와 라벨 존재, 활용
+피쳐가 주어졌을 때 적절한 라벨 결정
+
+-Decision Tree란?
+지도학습의 기본 알고리즘
+
+-Decision Tree 학습 방법
+주어진 데이터를 최적으로 나누는 방법 : 개수, 정확도, 1:n(트리의 높이가 너무 높아짐)
+
+split 계산 : 모든 샘플 각각 피쳐 타입 적용 -> 
+	임계값 Threshold 별로 점수 매김 -> 최적의 조합 -> n*d*k개 만큼 계산
+일반적으로 greedy recursive splitting 전략 사용 : 각각의 스플릿 노드만 최적화(단계적)
+
+
+2-2 지도학습의 일반화 성능
+-지도학습의 일반화 성능이란?
+split node 언제까지 나눌 것인가?
+	Depth 무한대 : 학습 100%, 계산량 다수 -> 테스트 정확도는 떨어짐 : 과적합 Overfitting
+
+학습 데이터와 테스트 데이터 가정
+	서로 비슷한 상황
+	IID : 동일한 분포에서 왔다는 가정
+
+Overfitting의 정도 : Approximation 오류 발생, 테스트 정확도와 학습 정확도 차이
+	학습 데이터 너무 적을 경우 쉽게 발생
+	Depth 너무 큰 경우 과적합 발생
+
+-지도학습의 일반화 성능 향상 방법
+Validation Error : 기존 데이터를 두 부분으로 나뉘어 학습 데이터, 테스트 데이터로 나눔
+	IID 가정 충족
+
+N-fold Cross Validation : 주어진 학습 데이터 n 등분, 한 개만 밸리데이션 셋으로 활용
+	서로 다른 밸리데이션 오류 값들의 평균을 가장 작게 하는 모델을 찾아가는 것
+
+-Parameter & Hyper-paramrter 란?
+Parameter : 머신러닝 알고리즘으로 얻어진 값
+Hyper-paramrter : 사용자가 정해줄 수 있는 값
+
+조금씩 하이퍼 파라미터 변환 -> Cross Validation Error 가장 작아지는 값 찾음 -> 일반화 성능 높다
+

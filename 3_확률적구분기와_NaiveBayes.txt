@@ -1,0 +1,50 @@
+3-1 확률적 구분기의 정의
+-지도 학습의 테스트 성능 표현
+Precision : 예측된 모든 샘플 중 맞는 것의 비율
+Recall : 스팸이라고 판별했는가
+=> 반대 관계
+
+Precision-Recall Curve : 오른쪽 위로 갈 수록 높은 성능
+Roc Curve : 방향 반대 (최대 1)
+F1 Score : Precision과 Recall의 조화평균값
+Weighted F1 Score : 여러 개의 클래스에서 성능 비교
+
+-머신러닝을 위한 확률 계산 방법
+Random Variable: 확률에 의해 그 값이 결정되는 변수
+Joint Probability : 두 사건이 동시 발생하는 상황의 확률, 두 영역 겹치는 부분 확률 계산
+	p(D1 is odd, D2 =2)
+Marginalization Rule : A 이벤트 발생 확률과 A, X 동시 발생 확률 간의 관계 -> A
+Conditional Probability 조건부 확률 A|B : 시나리오 2개 고려
+	B 이벤트 발생한 상황에서 A 발생할 확률
+Product Rule : P(A,B) = P(A|B)P(B)
+Bayes Rule 베이즈 : P(A|B) = P(B|A)P(A) / P(B)
+독립 : P(A,B) = P(A)P(B)
+
+-확률적 구분기란?
+X 주어진 상황에서 0 or 1 -> 둘 중 높은 라벨에 샘플 할당
+
+
+3-2 Naive Bayes
+-Bayes Rule이란?
+P(A|B) = P(B|A)P(A) / P(B)
+	Likelihood : B given A (순서 바뀜)
+	Prior : A (목표 이벤트 발생 확률)
+	Marginalization : B (조건부 이벤트 발생 확률)
+	Posterior : A given B
+
+posterior 기준 A가 타겟라벨, B가 피쳐
+피쳐가 다양성이 많음(라벨은 0 or 1) -> 베이즈룰 적용하면 likelihood에 의해 얻기 더 쉬워짐
+
+-Naive Bayes란? (확률적 구분기)
+여전히 큰 피쳐 X의 다양성 문제 해결 -> 각 피쳐 독립적 가정
+
+-Naive Bayes와 Decision Tree 중 어떤 게 더 좋을까?
+Decision Tree : 한 개 피쳐 값 참고해서 나누는 과정 반복
+	피쳐 일부분만 고려 테스트
+	새로운 데이터 들어오면 새롭게 계산
+	=> 간단한 룰에 의해 샘플들 나뉠 경우 높은 성능
+
+Naive Bayes : 한 개 피쳐에 존재하는 모든 dimension 한번에 곱하기
+	모든 피쳐 고려
+	새로운 데이터로 인해 변경되는 확률값만 변경
+	=> 서로 독립성 잘 유지할 때 높은 성능
