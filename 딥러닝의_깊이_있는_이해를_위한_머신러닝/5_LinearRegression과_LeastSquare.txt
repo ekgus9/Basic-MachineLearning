@@ -1,0 +1,29 @@
+5-1 Linear Regression
+-Regression이란?
+수없이 많은 종류의 값 존재
+
+인과관계가 아닌 상관관계 표현
+
+-Linear Regression란?
+선으로 표현
+Multiple Dimension Linear Regression : W 여러개 (피쳐)
+
+
+5-2 Least Square
+-Least Square란?
+피쳐 * W = 예측 결과
+예측값에 최대한 정확하게 y값 나올 수 있도록 함 (차이 제곱 합) -> Least Square 최소되는 w값
+	f' = c1 곱 c2 합
+
+-Least Square 기반으로 Linear Regression 풀이
+N-dimension (w 여러 개) : d번의 w에 대한 미분 = 0
+
+-Least Square 한계점
+항상 원점 지남 y = wx -> bias variable : 가상의 피쳐 추가 w0
+정답이 한개만 존재하는 경우 많지 않음
+역행렬 계산 불가
+Outlier 취약
+모든 피쳐 활용하기 때문에 상관없는 피쳐 입력 가능성
+데이터 너무 클 경우 메모리 한계
+y 범위에 제한 불가
+단순한 선형 관계

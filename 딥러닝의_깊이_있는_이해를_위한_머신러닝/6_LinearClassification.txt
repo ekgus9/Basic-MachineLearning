@@ -1,0 +1,30 @@
+6-1 Linear Classification의 차별점
+-Linear Classification이란?
+Binary Classification: 라벨 +1과 -1로 구분
+
+-Linear Classification과 Linear Regression의 차이점
+w*x 결과가 0보다 클 경우 +1 , 아닐 경우 -1
+
+Linear Classifier에서 Decision Boundary : 선 아래 있으면 +1, 위 -1
+
+-Linear Classification 풀이법
+Linear Regression에서 배운 Least Square 모델 적용 불가능 -> 0-1 loss function
+	두 개 부호 같을 경우 0, 다를 경우 1 (같으냐 다르냐 중점 생각)
+	but 0-1 loss로 w 값 얻을 수 없음, 미분 값 항상 0
+
+0-1 loss function과 유사한 함수 고안 
+	Degenerate Solution : 모든 w가 0이 되어 linear classification model 풀 수 없음
+
+6-2 Linear Classification의 풀이 방법
+-Hinge Loss란?
+Degenerate Solution 제거 : 1과 비교
+0-1 loss보다 항상 크거나 같음
+but 1보다 클 경우 미분 값 0되어 더이상 최적화 불가
+
+-Logistic Loss란? -> Logistic Regression
+Max 함수를 Log-sum-exponential로 추정하여 변환
+항상 미분 가능 -> 최소값 가지기 쉬움
+
+-Linear Classification 풀이법
+예측 : wx 값이 0과 1 사이 나오도록 한다면 예측값으로 어떤 확률값이 사용되는 것
+	Linear Classificationfmf 를 확률적 구분기로 사용 가능 -> sigmoid function

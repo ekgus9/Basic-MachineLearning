@@ -1,0 +1,46 @@
+4-1 Non-parametric 구분기와 k-NN 모델
+-Decision Theory의 필요성과 사용법
+False Positive와 False Nagative 다른 비중 -> 전자에 cost(비용) 높게 잡음 -> 낮은 쪽 결정
+	ex. 스팸이 아닌 메일을 스팸으로 분류
+
+확률적 구분기 + Decision Theory
+
+-Non-parametric 구분기
+Parametric 모델 : 파라미터 개수 고정
+	데이터 많을수록 정확도 올라감
+	but 고정된 파라미터로는 더 큰 데이터 처리 한계
+Non-parametric 모델 : 파라미터 개수가 데이터 샘플과 거의 동일 ex. KNN 알고리즘
+
+-k-Nearest Neighbor 구분기
+모든 트레이닝 샘플들과 새롭게 입력된 데이터 거리 측정
+새로운 데이터에 가장 가까운 샘플에 해당되는 라벨 달아줌
+사용자가 선택할 수 있는 값은 K(고를 샘플 개수 / 하이퍼 파라미터) 뿐 -> K 작을 수록 모델 복잡
+학습 데이터 없음
+
+단점
+	계산양이 큼 -> Hierarchical Tree : 학습 데이터를 대표하는 몇 개의 샘플만 거리 우선 계산 -> 반복
+	저장 비용 큼
+	Curse of dimensionality : 학습 데이터 샘플들이 최대한 촘촘하게 있어야 정확한 라벨 추정 가능
+
+
+4-2 Ensemble 모델
+-Ensemble 모델이란? (메타 클레시파이어)
+여러 머신러닝 기법을 함께 사용
+
+성능을 높이기 위한 앙상블 모델 : 평균 Averaging / Stacking
+	개별적으로 결과 출력 -> 시간 동일, 성능 극대화
+
+-Random Forest란?
+Decision Tree를 독립 학습 후 averaging
+
+서로 다른 Decision Tree가 독립 유지하기 위해
+	Bootstrap sampling : 어떤 데이터셋 만들어내는 과정 (랜덤 샘플 추출) -> Bagging
+	Random Tree : 스플리팅 알고리즘의 단순화 / 피쳐 타입 랜덤하게 고름
+
+Random Forest : Bagging + Random Tree
+
+-Boosting이란?
+Cascade Classifier : 부스팅 활용 -> 속도 향상 목적
+
+첫째 구분기가 현재 입력되고 있는 샘플이 틀렸다고 결론 내리면 나머지 작동 안함
+점점 자세한 클래시파이어 배치
