@@ -59,12 +59,11 @@ import numpy as np
 x_train = [1,2,3]
 y_train = [1,2,3]
 
-W = tf.Variable(tf.random.normal([1]),name = 'weight')
-b = tf.Variable(tf.random.normal([1]),name = 'bias')
+# W = tf.Variable(tf.random.normal([1]),name = 'weight')
+# b = tf.Variable(tf.random.normal([1]),name = 'bias')
+# hypothesis = x_train * W + b
+# cost = tf.reduce_mean(tf.square(hypothesis - y_train))
 
-hypothesis = x_train * W + b
-
-cost = tf.reduce_mean(tf.square(hypothesis - y_train))
 op = tf.keras.optimizers.SGD(learning_rate = 0.01)
 
 model = tf.keras.models.Sequential()
