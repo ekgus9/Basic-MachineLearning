@@ -1,0 +1,29 @@
+9-1 Non-linear Data 처리 방법
+-Non-linear Data의 정의, 사용법
+Feature Engineering 모델 : 입력된 피쳐를 한 번 바꿔주는 과정 거쳐서 추출 -> Bag of Word가 대표적
+Kernel Trick : 이미 추출된 피쳐를 변형하여 리니어 모델로 학습
+
+-Non-linear Data를 위한 Feature 추출 과정
+Bag of Word : 부분적인 특징들을 가각 한 개의 워드로 표현하고 워드들의 조합으로 한 개의 이미지 표현
+	픽셀값이 큰 의미는 없음 -> 픽셀들 간 (복셀) 상관관계
+	1D Convolution 필터 : ex. [0 0 1] 왼쪽 값이 가운데로 배정
+		양쪽 픽셀이 없는 경우 계산할 수 없기에 이미지가 점점 작아짐 -> 패딩 (가상의 값 할당)
+
+-그림에서의 Feature 추출 과정
+2D Convolution : 2개의 좌표값 표현
+3D : 빨초파, 일반적인 이미지
+
+가우시안 필터 : 블러링 효과
+라플라시안 오브 가우시안 필터 :경계선에 해당하는 부분 큰 값
+
+9-2 Non-linear Data 머신러닝 학습 방법
+-Non-linear feature transform이란?
+새로운 피쳐 하나 조작 및 추가 -> 선형 -> 비선형
+
+-Kernel Trick이란?
+피쳐의 개수가 여러개 
+
+-Kernel Trick 효과
+kernel 방정식 활용하여 k 매트릭스 계산하면 피쳐 모두 고려한 것과 같은 효과
+계산량 줄어듦
+
