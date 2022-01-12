@@ -1,0 +1,40 @@
+13-1 Structure of Deep Neural Network
+-Deep Neural Network란?
+기존 머신러닝은 비선형성이 심할 경우 해결이 어려움 -> 선형으로 변형 -> Overfitting 과적합 문제 
+	(Kernelization 활용 (가상의 피쳐 고려) -> 데이터가 많다면 Overfitting)
+
+딥러닝에서 비선형성 : 수많은 간단한 비선형 융합, 빅데이터
+
+특정 이미지 입력 -> Convolution layer 통과 -> Fully-connected layer 통과 -> 예측 결과값 출력
+
+-Deep Neural Network 구성요소
+Convolution layer : 여러 레이어로 구성
+	각 레이어는 학습 과정과 테스트 과정 거침 (다시 자동 학습된 필터 적용)
+	각 레이어 사이 Pooling layer 존재 (해상도 낮춰주는 효과)
+
+	종류 : 가우시안 필터 (평균), Sharpen convolution (엣지 정보 중심), 라플라시안 등
+
+Fully-connected layer : Convolution layer와 유사
+	마지막 레이어를 제외하고는 선형회귀 -> 마지막 레이어는 선형분류
+	목표값 모름 (Hidden or Latent Feature)
+
+activation function : 레이어 뒤 비선형성 표현
+	간단한 비선형성 구현 (사람 뉴런 구조 : 0보다 작은 값 무시)
+
+
+13-2 Training of Deep Neural Network
+-Deep Neural Network 학습 진행 방법
+loss fuction + error function 필요
+Supervised classification 딥러닝에선 Cross-entropy Loss 많이 활용 -> softmax로 각 출력값이 확률되게 변경
+	-> Gradient Descent 
+
+마지막 레이어가 아닌 레이어 : 타겟값 모름 Latent or Hidden Feature
+	여러개의 레이어 거쳐 얻은 최종 목표 값 정보 활용하여 앞 레이어 학습 : Chain Rule
+
+-각 구성요소에 대한 학습 방법
+Mini-batch Gradient Descent 그대로 활용 + Chain Rule 활용 -> 모든 웨이트 값 업데이트 가능
+
+딥러닝 키포인트
+	모델 크기 커서 학습 속도 느림 -> gpu 통한 병렬 처리
+	과적합 -> 수많은 데이터 필요
+	gradient vanishing or exploding 문제 (체인 룰로 인해 gradient 누적) -> Xavier’s Initialization
