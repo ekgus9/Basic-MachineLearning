@@ -1,0 +1,36 @@
+14-1 Supervised Learning with Deep Neural Network
+-Deep Neural Network를 활용한 Supervised Learning을 향상 시킬 수 있는 방법
+Residual Network : input feature + 최종적인 아웃풋
+	옛 결과를 나중에 활용 가능
+
+	Deep Neural Network 각각 레이어에서 나오는 결과값은 가우시안 분포 갖도록 학습
+	-> 웨이트 파라미터 너무 클 경우 결과값이 너무 커지게 됨
+	-> Xavier’s initialization : 각 아웃풋이 노말 분포 따르도록 하는 알고리즘
+
+-Residual 구조의 의미
+Deep Neural Network Layer 깊이가 깊어지면 레이어 학습 어려워짐 : gradient vanishing 문제
+	해결 : Residual Network에서 제안 하는 skip connection
+		아웃풋 = 인풋 + 아웃풋 : gradient 값이 1 근처 누적
+
+-다양한 Deep Neural Network 활용방법
+Class Activation Map (CAM) : 딥 뉴럴 네트워크가 내부적으로 보이는 반응 기반으로 목표 클래스가 구체적으로 어디에 존재하는지 찾을 수 있는 알고리즘
+	Convolution filter + Linear regression : linear regressor 웨이트 값이 큰 convolution filter의 반응성 파악
+
+확률적 딥러닝 학습 방법 : drop-out (과적합 방지) -> 업데이트마다 웨이트 바뀜 (0으로 만들어서) -> 학습 뿐만 아니라 테스트할 때도 활용
+	Mc-dropout : 반복적인 계산 하며 서로 다른 결과값 출력
+	결과값의 안정성 기반으로 현재 딥 뉴럴 네트워크가 예측하는 결과값의 신뢰성과 안정성 결정
+
+
+14-2 Unsupervised Learning with Deep Neural Network
+-Deep Neural Network 활용한 Unsupervised Learning 방법
+Auto-encoder
+	구조 : 딥 뉴럴 네트워크와 동일
+	출력값에서 차이 -> 인풋과 동일한 결과값, 인풋과 동일한 가짓수의 큰 출력값
+	데이터만 있어도 네트워크 학습 가능 (비지도)
+	초기화 위해 개발 -> 데이터 분석 측면 활용 : 데이터 압축
+	인코더 + 디코더
+
+	단점 : encoded feature가 입력 데이터 간 유사도 표현 못함
+
+Variational Auto-encoder : encoded feature가 특정 확률 분포 가지도록 유도 -> 근처 encoded feature가 서로 비슷한 특징 고려하도록 학습
+	linear regression 모델은 고정된 값 출력 -> 평균값과 분산값 출력으로 해결
